@@ -17,6 +17,7 @@ helm install kserve-crd oci://ghcr.io/kserve/charts/kserve-crd \
   --wait
 ```
 
+
 ### Install KServe controller
 
 ```
@@ -62,6 +63,9 @@ kubectl log kservercontroller --all-containers -n namespace
 ```
 kubectl -n ml port-forward svc/<svc-name> 8080:80
 ```
+kubectl get horizontalpodautoscalers.autoscaling -n my-name
+kubectl get hpa -n my-name
+kubectl get svc -n my-name
 
 ### Inference the Model
 
