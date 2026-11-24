@@ -42,7 +42,7 @@ spec:
     model:
       modelFormat:
         name: sklearn
-      storageUri: "<downloadable location>"
+      storageUri: "<downloadable location>". // s3 or github binary https://github.com/poovarasurajendran89/Intent-classifier-model-vm/releases/download/1.0/intent_model.pkl
       resources:
         requests:
           cpu: "100m"
