@@ -55,6 +55,8 @@ EOF
 kubectl get inferenceservice intent-classifier -n intent
 ```
 
+kubectl get pods -n kserver
+kubectl log kservercontroller --all-containers -n namespace
 ### Port-forward to access the model
 
 ```
