@@ -21,13 +21,13 @@ add the DSL in that file for each components
 import kfp
 form kfp import dsl, complier
 add this in each components example: data ingestion, data processing, model building, model evalution, model registry .....etc  
-.@dsl.component(
+@dsl.component(
   base_image=" ",
   package_install=" ")
 
 where the function is invoke or stage is invoke
 
-.dsl.pipeline(
+@dsl.pipeline(
   name = " ",
   description= "")
 
@@ -43,5 +43,16 @@ hello world files and other files
 run the file and pipeline .yml file is create and upload the files in kuflow pipeline.we can see the DAG grah for the stages
 
 
+container based approach similar
+@dsl.container_component(
+  base_image=" ",
+  package_install=" ")
 
+@dsl.container_pipeline(
+  name=""
+  description=" ")
+kfp.complier.complier().compile(
+modeincokename,
+pipeline_path = "pipeline.yml")
+)
   
