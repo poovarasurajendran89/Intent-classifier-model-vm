@@ -1,0 +1,51 @@
+containarized approach:
+create the docker file
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY model.py .
+
+CMD ["python", "model.py", "--model_name=hello-model"]
+
+kserve:
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: hello-kserve
+spec:
+  predictor:
+    containers:
+      - name: kserve-container
+        image: YOUR_DOCKERHUB/hello-kserve:v1
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+
+kubectl create namespace kserve-demo
+
+kubectl apply -n kserve-demo -f kserve.yaml
+kubectl get inferenceservice -n kserve-demo
+
+kubectl get pods -n kserve-demo
+kubectl port-forward \
+  -n kserve-demo \
+  svc/hello-kserve-predictor \
+  8080:80
+curl -X POST \
+  http://localhost:8080/v1/models/hello-kserve:predict \
+  -H "Content-Type: application/json" \
+  -d '{"instances":[{}]}'
+
+
+model package approach:
+predictor:
+  model:
+  modelformat:
+    name: " "
+  storageurl = " "
