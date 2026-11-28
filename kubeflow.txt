@@ -1,5 +1,13 @@
 Install kudeflow in kubernetes
 https://www.kubeflow.org/docs/components/pipelines/operator-guides/installation/
+
+export PIPELINE_VERSION=2.18.2
+kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
+kubectl wait --for condition=established --timeout=60s crd/applications.app.k8s.io
+kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/cert-manager/platform-agnostic-k8s-native?ref=$PIPELINE_VERSION"
+
+
+
 componenets are available in kubeflow(kubeflow spark operator, kubeflow trainer, kubeflow kabin, kubeflow kserver, kubeflow pipeline, kubeflow model registry, kubeflow dashboard)
  DSI- domain specific language (covert python code into yaml)- no need to write yaml file(kubernetes does support for the future ) kubeflow have their own CRD's
 example: kubeflow works in Argo CD solution(inbuilt ArgoCD workflow -controller)
