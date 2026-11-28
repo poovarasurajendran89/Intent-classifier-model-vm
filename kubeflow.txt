@@ -1,0 +1,39 @@
+Install kudeflow in kubernetes
+https://www.kubeflow.org/docs/components/pipelines/operator-guides/installation/
+componenets are available in kubeflow(kubeflow spark operator, kubeflow trainer, kubeflow kabin, kubeflow kserver, kubeflow pipeline, kubeflow model registry, kubeflow dashboard)
+ DSI- domain specific language (covert python code into yaml)- no need to write yaml file(kubernetes does support for the future ) kubeflow have their own CRD's
+example: kubeflow works in Argo CD solution(inbuilt ArgoCD workflow -controller)
+pip install kfp or specfic version
+kubectl get pods -n kubeflow
+create projects
+mkdir kubeflow
+cd kubeflow
+create python file
+add the DSL in that file for each components
+import kfp
+form kfp import dsl, complier
+add this in each components example: data ingestion, data processing, model building, model evalution, model registry .....etc  
+.@dsl.component(
+  base_image=" ",
+  package_install=" ")
+
+where the function is invoke or stage is invoke
+
+.dsl.pipeline(
+  name = " ",
+  description= "")
+
+compiler
+kfp.complier.compiler().compile(
+  ivoke methodname,
+  pipeline_path= "pipeline.yml")
+
+
+Example: 
+hello world files and other files
+
+run the file and pipeline .yml file is create and upload the files in kuflow pipeline.we can see the DAG grah for the stages
+
+
+
+  
