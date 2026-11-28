@@ -1,0 +1,19 @@
+install the eks cluster
+create the namespace (get to know resource quota hardware compute for the namespace example 4cpu and 4GbRAM)
+ and RBAC for access contol for the team
+install kubeclt, helm dependency
+deploy the application
+deploy the service
+Open the port in the  node security group for the service is use
+setuo ingress - it create the ingress controller -nginx, alb, traefik
+test it using port forwarding
+or nslookup ALB DNS
+or dig  DNS or getent ahosts ALBDNS
+example: local test
+curl -X POST --resolve example.com:80:a58f4c53f3ba9437bbe8729ad142243c-1907449975.ap-south-1.elb.amazonaws.com http://example.com/predict -H "Content-Type: application/json" -d '{"text":"I want to cancel my subscription"}'
+
+or
+
+curl -X POST --resolve example.com:80:ALBIPAddress http://example.com/predict -H "Content-Type: application/json" -d '{"text":"I want to cancel my subscription"}'
+
+
